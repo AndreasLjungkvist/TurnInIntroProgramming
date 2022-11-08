@@ -32,7 +32,8 @@ public class TDDClass {
         LogicClass library = new LogicClass("");
         //Act
         library.setText("stop");
-        boolean actual = library.booleanSwitch(library.getText());
+        library.tryBooleanSwitch();
+        boolean actual = library.getBooleanSwitch();
         boolean expected = false;
         //Assert
         assertEquals( actual, expected);
@@ -44,7 +45,8 @@ public class TDDClass {
         LogicClass library = new LogicClass("");
         //Act
         library.setText("blåbär");
-        boolean actual = library.booleanSwitch(library.getText());
+        library.tryBooleanSwitch();
+        boolean actual = library.getBooleanSwitch();
         boolean expected = true;
         //Assert
         assertEquals( actual, expected);
@@ -70,23 +72,16 @@ public class TDDClass {
         //Assert
         assertEquals(expected,actual);
     }
-
     @Test
-    public void manualInputs() {
+    public void countCharacters() {
         //Arrange
         LogicClass library = new LogicClass("");
-        List<String> list = new ArrayList<String>();
-        List<String> exp = new ArrayList<String>(Arrays.asList("Test string in","String 2","Text 3"));
-
         //Act
-        library.setText("Test string in");
-        list.add(library.getText());
-        library.setText("String 2");
-        list.add(library.getText());
-        library.setText("Text 3");
-        list.add(library.getText());
-        List actual = list;
-        List expected = exp;
+        library.setText("123456789");
+        library.addToList();
+        library.listToString();
+        int actual = library.getCountCharacters();
+        int expected = 9;
         //Assert
         assertEquals(expected,actual);
     }
